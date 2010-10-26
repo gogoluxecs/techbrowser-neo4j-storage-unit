@@ -1,0 +1,51 @@
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="http://java.sun.com/xml/ns/javaee" xmlns:web="http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
+	id="WebApp_ID" version="2.5">
+
+  <display-name>tech-browser-neo4j-storage-unit</display-name>
+
+  <context-param>
+    <param-name>log4jConfigLocation</param-name>
+    <param-value>classpath:META-INF/properties/log4j.properties</param-value>
+  </context-param>
+
+  <listener>
+    <listener-class>org.springframework.web.util.Log4jConfigListener</listener-class>
+  </listener>
+
+  <!--All spring configuration files need to be loaded in context. Although we have single file but
+  with the growing configuration stuff we need to break down configuration files too-->
+  <context-param>
+    <param-name>contextConfigLocation</param-name>
+    <param-value>classpath*:META-INF/spring/app-*.xml</param-value>
+  </context-param>
+
+  <listener>
+    <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
+  </listener>
+
+  <servlet>
+    <!--Spring's front controller or dispatcher which will be responsible to handle every web request
+    and dispatch it to a specific web controller-->
+    <servlet-name>integration</servlet-name>
+    <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+    <load-on-startup>1</load-on-startup>
+    <init-param>
+      <param-name>contextConfigLocation</param-name>
+      <param-value>/WEB-INF/spring/app-mvc.xml</param-value>
+    </init-param>
+  </servlet>
+
+  <!--Let every request be handled by Spring's Dispatcher servlet and it'll decide which web controller to call -->
+  <!--based on @RequestMapping-->
+  <servlet-mapping>
+    <servlet-name>integration</servlet-name>
+    <url-pattern>/</url-pattern>
+  </servlet-mapping>
+
+	<welcome-file-list>
+		<welcome-file>index.html</welcome-file>
+	</welcome-file-list>
+
+</web-app>

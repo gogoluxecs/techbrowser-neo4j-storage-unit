@@ -1,0 +1,17 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite thread-count="10" verbose="1" name="TechBrowserNeoStorageIntegration-suite"
+	annotations="JDK" parallel="methods">
+
+  <!--base defaults which i'll be passing to my test methods-->
+  <parameter name="name" value="java"/>
+  
+  <!--view names that return from LinkController methods-->
+  <parameter name="getLink" value="links"/>
+
+  <test name="integration-tests">
+    <packages>
+      <package name="org.linkstorage.domain"/>
+    </packages>
+  </test>
+
+</suite>
