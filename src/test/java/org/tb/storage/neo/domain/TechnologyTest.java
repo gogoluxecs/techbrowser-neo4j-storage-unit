@@ -1,5 +1,6 @@
 package org.tb.storage.neo.domain;
 
+import org.testng.Assert;
 import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 
@@ -7,10 +8,9 @@ import org.testng.annotations.Test;
 public class TechnologyTest {
 
 	@Test
-	@Parameters({"name"})
+	@Parameters({"technology.name"})
 	public void setAndGetAttributes(String name) {
-		
-		
+		Assert.assertTrue(true);
 	}
 	
 }

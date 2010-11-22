@@ -2,16 +2,16 @@
 <suite thread-count="10" verbose="1" name="TechBrowserNeoStorageIntegration-suite"
 	annotations="JDK" parallel="methods">
 
-  <!--base defaults which i'll be passing to my test methods-->
-  <parameter name="name" value="java"/>
-  
   <!--view names that return from LinkController methods-->
   <parameter name="getLink" value="links"/>
 
-  <test name="integration-tests">
+  <test name="domainIntegrationTest">
+  	<parameter name="technology.name" value="spring framework" />
+  	<parameter name="tag.java" value="java" /> 
+  
     <packages>
-      <package name="org.linkstorage.domain"/>
+      <package name="org.tb.storage.neo.domain"/>
     </packages>
   </test>
-
+  
 </suite>
